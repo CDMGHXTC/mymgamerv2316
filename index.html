@@ -66747,33 +66747,56 @@ font-weight:bold;
   }
 }
 </style>
-<script id="portadas-catalogo-movil-82px-aplicacion-real">
+<!-- Ajuste de tamaño anterior retirado para evitar conflicto de estilos: portadas-catalogo-movil-82px-aplicacion-real -->
+
+<style id="catalogo-portadas-mismo-tamano-que-estrenos-final">
+/* SOLO CATÁLOGO: iguala el área de portada al formato final de ESTRENOS.
+   No modifica tarjetas, cuadrícula ni ninguna regla de #estrenos. */
+#catalogo .juego-card > img{
+  width:100% !important;
+  height:auto !important;
+  min-height:0 !important;
+  max-height:none !important;
+  aspect-ratio:16 / 9 !important;
+  object-fit:cover !important;
+  object-position:center center !important;
+  display:block !important;
+  box-sizing:border-box !important;
+  margin:0 !important;
+  padding:0 !important;
+  background:transparent !important;
+}
+@media (max-width:768px){
+  #catalogo .juego-card > img{
+    width:100% !important;
+    height:auto !important;
+    min-height:0 !important;
+    max-height:none !important;
+    aspect-ratio:16 / 9 !important;
+    object-fit:cover !important;
+    object-position:center center !important;
+  }
+}
+</style>
+<script id="catalogo-portadas-mismo-tamano-que-estrenos-inline-final">
 (function(){
-  function aplicar(){
-    if(!window.matchMedia('(max-width: 768px)').matches) return;
+  function ajustarSoloCatalogo(){
     document.querySelectorAll('#catalogo .juego-card > img').forEach(function(img){
       img.style.setProperty('width','100%','important');
-      img.style.setProperty('height','82px','important');
-      img.style.setProperty('min-height','82px','important');
-      img.style.setProperty('max-height','82px','important');
+      img.style.setProperty('height','auto','important');
+      img.style.setProperty('min-height','0','important');
+      img.style.setProperty('max-height','none','important');
       img.style.setProperty('aspect-ratio','16 / 9','important');
       img.style.setProperty('object-fit','cover','important');
       img.style.setProperty('object-position','center center','important');
       img.style.setProperty('display','block','important');
-      img.style.setProperty('padding','0','important');
-      img.style.setProperty('margin','0','important');
       img.style.setProperty('box-sizing','border-box','important');
+      img.style.setProperty('margin','0','important');
+      img.style.setProperty('padding','0','important');
     });
   }
-  function iniciar(){
-    aplicar();
-    setTimeout(aplicar,50);setTimeout(aplicar,200);setTimeout(aplicar,500);setTimeout(aplicar,1000);setTimeout(aplicar,2000);
-    // No observar todo el documento: mover una tarjeta genera mutaciones y
-    // podía disparar este mismo ajuste en un ciclo continuo. La prioridad se
-    // aplica al cargar y al redimensionar, sin vigilar cada cambio del DOM.
-    window.addEventListener('resize',aplicar);
-  }
-  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',iniciar); else iniciar();
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',ajustarSoloCatalogo); else ajustarSoloCatalogo();
+  window.addEventListener('resize',ajustarSoloCatalogo);
 })();
 </script>
 </html>
@@ -66902,25 +66925,7 @@ font-weight:bold;
   }
 }
 </style>
-<script id="portadas-catalogo-movil-mas-horizontales-js">
-(function(){
-  function ajustarPortadasHorizontales(){
-    if(window.innerWidth > 768) return;
-    document.querySelectorAll('#catalogo .juego-card > img').forEach(function(img){
-      img.style.setProperty('width','100%','important');
-      img.style.setProperty('height','auto','important');
-      img.style.setProperty('min-height','0','important');
-      img.style.setProperty('max-height','none','important');
-      img.style.setProperty('aspect-ratio','16 / 9','important');
-      img.style.setProperty('object-fit','cover','important');
-      img.style.setProperty('display','block','important');
-    });
-  }
-  document.addEventListener('DOMContentLoaded', ajustarPortadasHorizontales);
-  window.addEventListener('resize', ajustarPortadasHorizontales);
-  // Se elimina el ajuste cada segundo: las reglas CSS mantienen las dimensiones.
-})();
-</script>
+<!-- Ajuste de tamaño anterior retirado para evitar conflicto de estilos: portadas-catalogo-movil-mas-horizontales-js -->
 <style id="portadas-catalogo-pc-normales">
 @media (min-width:769px){
   #catalogo .juego-card > img{
